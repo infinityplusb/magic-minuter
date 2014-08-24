@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Minuting</title>
+    
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/chroma.js"></script>
+    <script type="text/javascript" src="js/webkitAudioContextMonkeyPath.js"></script>
+    <script type="text/javascript" src="js/Recorderjs/recorder.js"></script>
+
+	<link rel="stylesheet" href="css/reset.css" type="text/css" media="screen"/>
+	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen"/>
+	
+  </head>
+  
+  </body>
+    <header>
+      <h1>Magic Minuter</h1>
+      <p>Minuting</p>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="javascript:void(0)">Minuting</a></li>
+          <li><a href="javascript:void(0)">About Me</a></li>
+          <li><a href="javascript:void(0)">Contact</a></li>
+        </ul>
+      </nav>
+    </header>  
+    
+      <div id="viz">
+		<canvas id="analyser" width="1024" height="500"></canvas>
+		<canvas id="wavedisplay" width="1024" height="500"></canvas>
+	  </div>
+	  <div id="controls">
+		<img id="record" src="img/mic128.png" onclick="toggleRecording(this);">
+		<a id="save" href="#"><img src="img/save.svg"></a>
+	  </div>
+    
+    
+    <section class="container">
+    
+    
+    
+      <form>
+        <!--canvas id="canvas" width="200" height="300" style='border:1px solid black'></canvas-->
+        <button id ="record"
+          type = "button"
+          value = "clickme"
+          onclick="doFunction();" />
+        
+		
+		<!--script>
+		function success(e){
+    // creates the audio context
+    audioContext = window.AudioContext || window.webkitAudioContext;
+    context = new audioContext();
+
+    // creates a gain node
+    volume = context.createGain();
+
+    // creates an audio node from the microphone incoming stream
+    audioInput = context.createMediaStreamSource(e);
+
+    // connect the stream to the gain node
+    audioInput.connect(volume);
+
+    /* From the spec: This value controls how frequently the audioprocess event is 
+    dispatched and how many sample-frames need to be processed each call. 
+    Lower values for buffer size will result in a lower (better) latency. 
+    Higher values will be necessary to avoid audio breakup and glitches */
+    var bufferSize = 2048;
+    recorder = context.createJavaScriptNode(bufferSize, 2, 2);
+
+    recorder.onaudioprocess = function(e){
+        console.log ('recording');
+        var left = e.inputBuffer.getChannelData (0);
+        var right = e.inputBuffer.getChannelData (1);
+        // we clone the samples
+        leftchannel.push (new Float32Array (left));
+        rightchannel.push (new Float32Array (right));
+        recordingLength += bufferSize;
+    }
+
+    // we connect the recorder
+    volume.connect (recorder);
+    recorder.connect (context.destination); 
+}
+		</script-->
+      </form>
+    </section>
+  </body>
+</html>
